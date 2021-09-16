@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C38761126F22A850082D692 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38761026F22A850082D692 /* Utilities.swift */; };
 		2C4D343126EF56DD00D64EAD /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343026EF56DD00D64EAD /* FeedController.swift */; };
 		2C4D343326EF574E00D64EAD /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343226EF574E00D64EAD /* ExploreController.swift */; };
 		2C4D343526EF575F00D64EAD /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343426EF575F00D64EAD /* NotificationsController.swift */; };
 		2C4D343726EF576C00D64EAD /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343626EF576C00D64EAD /* ConversationsController.swift */; };
 		2C4D343B26EF7A4300D64EAD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343A26EF7A4300D64EAD /* Extensions.swift */; };
+		2C4D343E26EF841B00D64EAD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343D26EF841B00D64EAD /* LoginController.swift */; };
+		2C4D344026EF84E700D64EAD /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343F26EF84E700D64EAD /* RegistrationController.swift */; };
 		BCA1070326EB83450066E4B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1070226EB83450066E4B5 /* AppDelegate.swift */; };
 		BCA1070526EB83450066E4B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1070426EB83450066E4B5 /* SceneDelegate.swift */; };
 		BCA1070C26EB83480066E4B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA1070B26EB83480066E4B5 /* Assets.xcassets */; };
@@ -20,11 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C38761026F22A850082D692 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2C4D343026EF56DD00D64EAD /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		2C4D343226EF574E00D64EAD /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		2C4D343426EF575F00D64EAD /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		2C4D343626EF576C00D64EAD /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
 		2C4D343A26EF7A4300D64EAD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2C4D343D26EF841B00D64EAD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		2C4D343F26EF84E700D64EAD /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		BCA106FF26EB83450066E4B5 /* UdemyTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UdemyTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA1070226EB83450066E4B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCA1070426EB83450066E4B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,8 +55,18 @@
 			isa = PBXGroup;
 			children = (
 				2C4D343A26EF7A4300D64EAD /* Extensions.swift */,
+				2C38761026F22A850082D692 /* Utilities.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2C4D343C26EF840200D64EAD /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				2C4D343D26EF841B00D64EAD /* LoginController.swift */,
+				2C4D343F26EF84E700D64EAD /* RegistrationController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		BCA106F626EB83450066E4B5 = {
@@ -105,6 +121,7 @@
 		BCA1071B26EB84820066E4B5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2C4D343C26EF840200D64EAD /* Authentication */,
 				BCA1072026EB859B0066E4B5 /* MainTabController.swift */,
 				2C4D343026EF56DD00D64EAD /* FeedController.swift */,
 				2C4D343226EF574E00D64EAD /* ExploreController.swift */,
@@ -206,11 +223,14 @@
 			files = (
 				2C4D343526EF575F00D64EAD /* NotificationsController.swift in Sources */,
 				2C4D343726EF576C00D64EAD /* ConversationsController.swift in Sources */,
+				2C38761126F22A850082D692 /* Utilities.swift in Sources */,
 				BCA1070326EB83450066E4B5 /* AppDelegate.swift in Sources */,
 				2C4D343B26EF7A4300D64EAD /* Extensions.swift in Sources */,
+				2C4D343E26EF841B00D64EAD /* LoginController.swift in Sources */,
 				2C4D343326EF574E00D64EAD /* ExploreController.swift in Sources */,
 				BCA1070526EB83450066E4B5 /* SceneDelegate.swift in Sources */,
 				BCA1072126EB859B0066E4B5 /* MainTabController.swift in Sources */,
+				2C4D344026EF84E700D64EAD /* RegistrationController.swift in Sources */,
 				2C4D343126EF56DD00D64EAD /* FeedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,8 +370,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4FY7ZP6522;
 				INFOPLIST_FILE = UdemyTwitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -370,8 +391,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4FY7ZP6522;
 				INFOPLIST_FILE = UdemyTwitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
