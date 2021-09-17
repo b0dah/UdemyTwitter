@@ -99,7 +99,25 @@ class LoginController: UIViewController {
     // MARK:- Actions
     
     @objc private func handleLoginButtonTap() {
-        
+        guard let email = emailTextField.text,
+              let password = self.passwordTextField.text
+        else { return }
+        AuthService.shared.logUserin(withEmail: email, password: password) { (result, eror) in
+            if let error = eror {
+                print("DB: Error logging in: \(error.localizedDescription)")
+                return
+            }
+            
+            print("SuccessFull Login")
+            
+            guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow } ),
+                  let mainTabVC = window.rootViewController as? MainTabController
+            else { return }
+            
+            mainTabVC.checkAuthenticationAndConfigureUI()
+
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc private func handleSignUpButtonTap() {

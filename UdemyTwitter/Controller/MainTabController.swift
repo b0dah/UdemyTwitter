@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabController: UITabBarController {
     
@@ -26,9 +27,8 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureViewControllers()
-        
-        self.configureUI()
+        view.backgroundColor = .twitterBlue
+        self.checkAuthenticationAndConfigureUI()
     }
     
     // MARK:- Helpers
@@ -65,6 +65,32 @@ class MainTabController: UITabBarController {
         navigation.navigationBar.barTintColor = .white
         
         return navigation
+    }
+    
+    // MARK:- API
+    
+    public func checkAuthenticationAndConfigureUI() {
+        if Auth.auth().currentUser == nil {
+            print("DB: User is not logged in")
+            DispatchQueue.main.async {
+                let loginNavigationController = UINavigationController(rootViewController: LoginController())
+                loginNavigationController.modalPresentationStyle = .fullScreen
+                self.present(loginNavigationController, animated: true, completion: nil)
+            }
+        } else {
+            print("DB: User id logged in")
+            
+            self.configureViewControllers()
+            self.configureUI()
+        }
+    }
+    
+    func logUserOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print("DB: Failed to sign out with error: \(error.localizedDescription) ")
+        }
     }
     
     // MARK:- Actions

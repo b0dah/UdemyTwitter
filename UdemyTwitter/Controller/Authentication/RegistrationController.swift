@@ -142,7 +142,6 @@ class RegistrationController: UIViewController {
     
     @objc private func handleSignUpButtonTap() {
         
-        
         guard
             let profileImage = self.profileImage,
             let email = self.emailTextField.text,
@@ -151,46 +150,19 @@ class RegistrationController: UIViewController {
             let username = self.usernameTextField.text
         else { return }
         
-        // Image Stuff
-        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
-        let filename = NSUUID().uuidString
-        let storageFileRef = STORAGE_PROFILE_IMAGES.child(filename)
+        let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
         
-        // Upload image to Firebase
-        storageFileRef.putData(imageData, metadata: nil) { metaData, error in
-            // Then get image gloabal url
-            storageFileRef.downloadURL { url, error in
-                guard let profileImageUrl = url?.absoluteString else { return }
-                
-                // Create User with All this Data
-                Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                    if let error = error {
-                        print("Debug: ", error.localizedDescription)
-                        return
-                    }
-                    
-                    guard let uid = result?.user.uid else { return }
+        AuthService.shared.registerUser(credentials: credentials) { (error, reference) in
+            print("Debug: Sign Up Successfull")
+            
+            guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow } ),
+                  let mainTabVC = window.rootViewController as? MainTabController
+            else { return }
+            
+            mainTabVC.checkAuthenticationAndConfigureUI()
 
-                    let globalUser = USERS_REF.child(uid)
-                    
-                    let values = ["email": email,
-                                  "username": username,
-                                  "fullname": fullname,
-                                  "profileImageUrl": profileImageUrl
-                                 ]
-
-                    globalUser.updateChildValues(values) { (error, ref) in
-                        print("DB: Successfully update User")
-                    }
-                }
-            }
-            
-            
-            
-            
+            self.dismiss(animated: true, completion: nil)
         }
-        
-        
     }
     
     @objc private func handleShowLoginButtonTap() {
