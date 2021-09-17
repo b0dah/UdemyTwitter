@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationController: UIViewController {
     
     // MARK:- Properties
+    
+    private var profileImage: UIImage?
     
     private lazy var imagePicker: UIImagePickerController = {
         let picker = UIImagePickerController()
@@ -68,6 +71,7 @@ class RegistrationController: UIViewController {
     
     private let passwordTextField: UITextField = {
         let tf = Utilities().loginTextField(withPlaceholder: "Password")
+        tf.isSecureTextEntry = true
         return tf
     } ()
     
@@ -138,6 +142,55 @@ class RegistrationController: UIViewController {
     
     @objc private func handleSignUpButtonTap() {
         
+        
+        guard
+            let profileImage = self.profileImage,
+            let email = self.emailTextField.text,
+            let password = self.passwordTextField.text,
+            let fullname = self.fullnameTextField.text,
+            let username = self.usernameTextField.text
+        else { return }
+        
+        // Image Stuff
+        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        let filename = NSUUID().uuidString
+        let storageFileRef = STORAGE_PROFILE_IMAGES.child(filename)
+        
+        // Upload image to Firebase
+        storageFileRef.putData(imageData, metadata: nil) { metaData, error in
+            // Then get image gloabal url
+            storageFileRef.downloadURL { url, error in
+                guard let profileImageUrl = url?.absoluteString else { return }
+                
+                // Create User with All this Data
+                Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                    if let error = error {
+                        print("Debug: ", error.localizedDescription)
+                        return
+                    }
+                    
+                    guard let uid = result?.user.uid else { return }
+
+                    let globalUser = USERS_REF.child(uid)
+                    
+                    let values = ["email": email,
+                                  "username": username,
+                                  "fullname": fullname,
+                                  "profileImageUrl": profileImageUrl
+                                 ]
+
+                    globalUser.updateChildValues(values) { (error, ref) in
+                        print("DB: Successfully update User")
+                    }
+                }
+            }
+            
+            
+            
+            
+        }
+        
+        
     }
     
     @objc private func handleShowLoginButtonTap() {
@@ -151,9 +204,10 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let profileImage = (info[.editedImage] as? UIImage)?
-                .withRenderingMode(.alwaysOriginal) else {
-            return
-        }
+                .withRenderingMode(.alwaysOriginal) else { return }
+        
+        self.profileImage = profileImage
+        
         self.addPhotoButton.setImage(profileImage, for: .normal)
         
         addPhotoButton.layer.borderWidth = 3
