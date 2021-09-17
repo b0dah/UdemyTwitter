@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C12F56926F4744200DFA740 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12F56826F4744200DFA740 /* Constants.swift */; };
-		2C12F56B26F4BF8900DFA740 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12F56A26F4BF8900DFA740 /* AuthService.swift */; };
+		2C12F56E26F4DB7C00DFA740 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C12F56D26F4DB7C00DFA740 /* AuthService.swift */; };
 		2C38761126F22A850082D692 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38761026F22A850082D692 /* Utilities.swift */; };
 		2C3AE4E526F364A30089EC3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AE4E426F364A30089EC3C /* GoogleService-Info.plist */; };
 		2C4D343126EF56DD00D64EAD /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343026EF56DD00D64EAD /* FeedController.swift */; };
@@ -28,7 +28,7 @@
 
 /* Begin PBXFileReference section */
 		2C12F56826F4744200DFA740 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		2C12F56A26F4BF8900DFA740 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = UdemyTwitter/Utils/AuthService.swift; sourceTree = SOURCE_ROOT; };
+		2C12F56D26F4DB7C00DFA740 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		2C38761026F22A850082D692 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2C3AE4E426F364A30089EC3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C4D343026EF56DD00D64EAD /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
@@ -62,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C12F56C26F4DB6A00DFA740 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2C12F56D26F4DB7C00DFA740 /* AuthService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		2C4D343926EF7A2900D64EAD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,11 +118,11 @@
 		BCA1070126EB83450066E4B5 /* UdemyTwitter */ = {
 			isa = PBXGroup;
 			children = (
+				2C12F56C26F4DB6A00DFA740 /* API */,
 				BCA1071F26EB84910066E4B5 /* Model */,
 				BCA1071E26EB848E0066E4B5 /* ViewModel */,
 				BCA1071D26EB848C0066E4B5 /* View */,
 				BCA1071B26EB84820066E4B5 /* Controller */,
-				BCA1071726EB84520066E4B5 /* API */,
 				2C4D343926EF7A2900D64EAD /* Utils */,
 				BCA1071626EB84410066E4B5 /* Configuration */,
 				BCA1070B26EB83480066E4B5 /* Assets.xcassets */,
@@ -132,14 +140,6 @@
 				BCA1070426EB83450066E4B5 /* SceneDelegate.swift */,
 			);
 			path = Configuration;
-			sourceTree = "<group>";
-		};
-		BCA1071726EB84520066E4B5 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				2C12F56A26F4BF8900DFA740 /* AuthService.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		BCA1071B26EB84820066E4B5 /* Controller */ = {
@@ -305,7 +305,7 @@
 				BCA1070326EB83450066E4B5 /* AppDelegate.swift in Sources */,
 				2C4D343B26EF7A4300D64EAD /* Extensions.swift in Sources */,
 				2C4D343E26EF841B00D64EAD /* LoginController.swift in Sources */,
-				2C12F56B26F4BF8900DFA740 /* AuthService.swift in Sources */,
+				2C12F56E26F4DB7C00DFA740 /* AuthService.swift in Sources */,
 				2C4D343326EF574E00D64EAD /* ExploreController.swift in Sources */,
 				BCA1070526EB83450066E4B5 /* SceneDelegate.swift in Sources */,
 				BCA1072126EB859B0066E4B5 /* MainTabController.swift in Sources */,
