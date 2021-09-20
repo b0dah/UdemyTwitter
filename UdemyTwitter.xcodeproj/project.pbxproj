@@ -18,6 +18,7 @@
 		2C4D343B26EF7A4300D64EAD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343A26EF7A4300D64EAD /* Extensions.swift */; };
 		2C4D343E26EF841B00D64EAD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343D26EF841B00D64EAD /* LoginController.swift */; };
 		2C4D344026EF84E700D64EAD /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343F26EF84E700D64EAD /* RegistrationController.swift */; };
+		2C8DBD5E26F87DC6001603A6 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8DBD5D26F87DC6001603A6 /* UserService.swift */; };
 		B90989E2BE927D523BD81FEF /* Pods_UdemyTwitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E60A26700FDB24FBF6DB85 /* Pods_UdemyTwitter.framework */; };
 		BCA1070326EB83450066E4B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1070226EB83450066E4B5 /* AppDelegate.swift */; };
 		BCA1070526EB83450066E4B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1070426EB83450066E4B5 /* SceneDelegate.swift */; };
@@ -38,6 +39,7 @@
 		2C4D343A26EF7A4300D64EAD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2C4D343D26EF841B00D64EAD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2C4D343F26EF84E700D64EAD /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		2C8DBD5D26F87DC6001603A6 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		40E60A26700FDB24FBF6DB85 /* Pods_UdemyTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UdemyTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8601FE2439C2A36C56C56F93 /* Pods-UdemyTwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UdemyTwitter.debug.xcconfig"; path = "Target Support Files/Pods-UdemyTwitter/Pods-UdemyTwitter.debug.xcconfig"; sourceTree = "<group>"; };
 		BCA106FF26EB83450066E4B5 /* UdemyTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UdemyTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				2C12F56D26F4DB7C00DFA740 /* AuthService.swift */,
+				2C8DBD5D26F87DC6001603A6 /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C8DBD5E26F87DC6001603A6 /* UserService.swift in Sources */,
 				2C4D343526EF575F00D64EAD /* NotificationsController.swift in Sources */,
 				2C4D343726EF576C00D64EAD /* ConversationsController.swift in Sources */,
 				2C38761126F22A850082D692 /* Utilities.swift in Sources */,
