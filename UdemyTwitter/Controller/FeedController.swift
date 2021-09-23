@@ -47,12 +47,11 @@ class FeedController: UIViewController {
         imageView.setDimensions(width: 44, height: 44)
         navigationItem.titleView = imageView
         
-        
     }
     
     private func cofigureLeftBarButton() {
         guard let user = user else { return }
-        guard let url = URL(string: user.profileImageUrl) else { return }
+        guard let url = user.profileImageUrl else { return }
         // User Avatar on the left of Navigation Bar
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
         self.profileImageView.sd_setImage(with: url, completed: nil)

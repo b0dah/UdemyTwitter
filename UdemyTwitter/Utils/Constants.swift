@@ -7,8 +7,14 @@
 
 import Firebase
 
-let DB = Database.database(url: "https://udemytwitter-f8e08-default-rtdb.europe-west1.firebasedatabase.app").reference()
-let STORAGE = Storage.storage().reference()
+// MARK:- Storage
 
-let USERS_REF = DB.child("users")
+let STORAGE = Storage.storage().reference()
 let STORAGE_PROFILE_IMAGES = STORAGE.child("profile_images")
+
+// MARK:- Database
+
+let DB = Database.database(url: "https://udemytwitter-f8e08-default-rtdb.europe-west1.firebasedatabase.app").reference()
+let USERS_REF = DB.child("users")
+
+let TWEETS_REF = DB.child("tweets")
