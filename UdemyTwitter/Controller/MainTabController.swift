@@ -12,6 +12,14 @@ class MainTabController: UITabBarController {
     
     // MARK:- Properties
     
+    var user: User? {
+        didSet {
+            guard let nav = viewControllers?.first as? UINavigationController else { return }
+            guard let feed = nav.viewControllers.first as? FeedController else { return }
+            feed.user = self.user
+        }
+    }
+    
     let actionButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -26,7 +34,7 @@ class MainTabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = .twitterBlue
         self.checkAuthenticationAndConfigureUI()
     }
@@ -70,7 +78,9 @@ class MainTabController: UITabBarController {
     // MARK:- API
     
     public func fetchUser() {
-        UserService.shared.fetchUser()
+        UserService.shared.fetchUser(completion: { user in
+            self.user = user
+        })
     }
     
     public func checkAuthenticationAndConfigureUI() {

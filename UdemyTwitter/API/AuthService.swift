@@ -39,9 +39,19 @@ struct AuthService {
         
         // Upload image to Firebase
         storageFileRef.putData(imageData, metadata: nil) { metaData, error in
+            
+            guard error == nil else {
+                print("DB: Failed to upload image: \(error!.localizedDescription)")
+                return
+            }
+            
             // Then get image gloabal url
             storageFileRef.downloadURL { url, error in
-                guard let profileImageUrl = url?.absoluteString else { return }
+                
+                guard let profileImageUrl = url?.absoluteString else {
+                    print("DB: No url!")
+                    return
+                }
                 
                 // Create User with All this Data
                 Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { result, error in
