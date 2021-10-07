@@ -16,7 +16,7 @@ class FeedController: UICollectionViewController {
     
     public var user: User? {
         didSet {
-            cofigureLeftBarButton() //print("DB: User is already in FeedController!")
+            cofigureLeftBarButton()
         }
     }
     
@@ -45,6 +45,12 @@ class FeedController: UICollectionViewController {
         self.configureController()
         self.configureUI()
         self.fetchTweets()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.barStyle = .default
     }
     
     // MARK:- Helpers
@@ -93,6 +99,7 @@ extension FeedController {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: tweetCellReuseID, for: indexPath) as! TweetCell
         cell.tweet = self.tweets[indexPath.row]
+        cell.delegate = self
         
         return cell
     }
@@ -105,5 +112,19 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: view.frame.width, height: 120)
     }
+}
+
+// MARK:- TweetCellDelegate
+
+extension FeedController: TweetCellDelegate {
+    func handleProfileImageTapped(_ cell: TweetCell) {
+        
+        guard let user = cell.tweet?.user else { return }
+        
+        let profileController = ProfileController(user: user)
+        self.navigationController?.pushViewController(profileController, animated: true)
+    }
+    
+    
 }
 

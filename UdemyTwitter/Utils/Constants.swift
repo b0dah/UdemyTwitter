@@ -18,3 +18,4 @@ let DB = Database.database(url: "https://udemytwitter-f8e08-default-rtdb.europe-
 let USERS_REF = DB.child("users")
 
 let TWEETS_REF = DB.child("tweets")
+let USER_TWEETS_REF = DB.child("user-tweets")
