@@ -14,13 +14,15 @@ class ProfileController: UICollectionViewController {
     
     // MARK:- Properties
     
-    private let user: User
+    private var user: User
     
     private var tweets: [Tweet] = [] {
         didSet {
             self.collectionView.reloadData()
         }
     }
+    
+    private weak var collectionViewHeader: ProfileHeader!
     
     // MARK:- Lifecycle
     
@@ -37,7 +39,10 @@ class ProfileController: UICollectionViewController {
         super.viewDidLoad()
         
         self.configureCollectionView()
+        self.checkIfUserIsFollowed()
+        self.fetchUserStats()
         self.fetchTweets()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +69,21 @@ class ProfileController: UICollectionViewController {
     private func fetchTweets() {
         TweetService.shared.fetchTweets(forUser: self.user) { tweets in
             self.tweets = tweets
+        }
+    }
+    
+    private func checkIfUserIsFollowed() {
+        UserService.shared.checkIfUserIsFollowed(userID: user.uid) { isFollowed in
+            self.user.isFollowed = isFollowed
+            
+            self.collectionView.reloadData()
+        }
+    }
+    
+    private func fetchUserStats() {
+        UserService.shared.fetchUserStats(uid: user.uid) { stats in
+            self.user.stats = stats
+            self.collectionView.reloadData()
         }
     }
     
@@ -96,6 +116,9 @@ extension ProfileController {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: collectionViewHeaderIdentifier, for: indexPath) as! ProfileHeader
         header.user = self.user
         header.delegate = self
+        
+        self.collectionViewHeader = header
+        
         return header
     }
 }
@@ -116,7 +139,33 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
 // MARK:- ProfileHeaderDelegate
 
 extension ProfileController: ProfileHeaderDelegate {
+    
+    func handleEditProfileOrFollow(_ header: ProfileHeader) {
+        
+        if self.user.isCurrentUser {
+            print("Present Edit profile controller")
+            return
+        }
+        
+        if user.isFollowed {
+            UserService.shared.unfollowUser(userToUnfollowID: self.user.uid) { error, db in
+                self.user.isFollowed = false
+                // Reload CV data to update button title
+                self.collectionView.reloadData()
+            }
+        } else {
+            UserService.shared.followUser(userToFollowID: self.user.uid) { error, db in
+                self.user.isFollowed = true
+                // Reload CV data to update button title
+                self.collectionView.reloadData()
+            }
+        }
+        
+        
+    }
+    
     func handleDismissTapped() {
         self.navigationController?.popViewController(animated: true)
     }
+    
 }

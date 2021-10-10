@@ -48,7 +48,6 @@ struct TweetService {
             UserService.shared.fetchUser(uid: userID) { user in
                 let tweet = Tweet(user: user, tweetID: tweetID, dictionary: dictionary)
                 tweets.append(tweet)
-                print("completion")
                 completion(tweets)
             }
             

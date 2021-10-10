@@ -17,6 +17,7 @@
 		2C2EC886270CEBC00035E730 /* ProfileFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2EC885270CEBC00035E730 /* ProfileFilterCell.swift */; };
 		2C38761126F22A850082D692 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C38761026F22A850082D692 /* Utilities.swift */; };
 		2C3AE4E526F364A30089EC3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AE4E426F364A30089EC3C /* GoogleService-Info.plist */; };
+		2C3F272B2710337600E97696 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F272A2710337600E97696 /* UserCell.swift */; };
 		2C4D343126EF56DD00D64EAD /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343026EF56DD00D64EAD /* FeedController.swift */; };
 		2C4D343326EF574E00D64EAD /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343226EF574E00D64EAD /* ExploreController.swift */; };
 		2C4D343526EF575F00D64EAD /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D343426EF575F00D64EAD /* NotificationsController.swift */; };
@@ -50,6 +51,7 @@
 		2C2EC885270CEBC00035E730 /* ProfileFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFilterCell.swift; sourceTree = "<group>"; };
 		2C38761026F22A850082D692 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		2C3AE4E426F364A30089EC3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2C3F272A2710337600E97696 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		2C4D343026EF56DD00D64EAD /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		2C4D343226EF574E00D64EAD /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		2C4D343426EF575F00D64EAD /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				2C2EC881270B7A040035E730 /* ProfileHeader.swift */,
 				2C2EC883270CBDEB0035E730 /* ProfileFilterView.swift */,
 				2C2EC885270CEBC00035E730 /* ProfileFilterCell.swift */,
+				2C3F272A2710337600E97696 /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				2C8D6B8826FC840700C5108A /* CaptionTextView.swift in Sources */,
 				2C2EC886270CEBC00035E730 /* ProfileFilterCell.swift in Sources */,
 				2C4D343726EF576C00D64EAD /* ConversationsController.swift in Sources */,
+				2C3F272B2710337600E97696 /* UserCell.swift in Sources */,
 				2C38761126F22A850082D692 /* Utilities.swift in Sources */,
 				BCA1070326EB83450066E4B5 /* AppDelegate.swift in Sources */,
 				2C4D343B26EF7A4300D64EAD /* Extensions.swift in Sources */,

@@ -25,10 +25,10 @@ enum ProfileFilterOptions: Int, CaseIterable {
 
 struct ProfileheaderViewModel {
     
-    private let user: User
+    private var user: User
     
     private var isCurrentUser: Bool {
-        Auth.auth().currentUser?.uid == user.uid
+        user.isCurrentUser
     }
     
     init(user: User) {
@@ -50,28 +50,30 @@ struct ProfileheaderViewModel {
     }
     
     public var followingString: NSAttributedString? {
-        attributedText(withIntValue: 0, text: " following")
+        attributedText(withIntValue: user.stats?.following ?? 0, text: " following")
     }
     
     public var followersString: NSAttributedString? {
-        attributedText(withIntValue: 0, text: " followers")
+        attributedText(withIntValue: user.stats?.followers ?? 0, text: " followers")
     }
-    
-    
-    
-    
-    
-    
     
     public var actionButtonTitle: String {
         // if user user is current user then set to edit profile
         // else figure out if following / not following
-        
+
         if isCurrentUser {
             return "Edit Profile"
-        } else {
+        }
+        
+        if !user.isFollowed && !isCurrentUser {
             return "Follow"
         }
+        
+        if user.isFollowed {
+            return "Following"
+        }
+        
+        return ""
     }
     
     // MARK:- Helpers

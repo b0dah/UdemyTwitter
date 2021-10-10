@@ -9,6 +9,7 @@ import UIKit
 
 protocol ProfileHeaderDelegate: AnyObject {
     func handleDismissTapped()
+    func handleEditProfileOrFollow(_ header: ProfileHeader)
 }
 
 class ProfileHeader: UICollectionReusableView {
@@ -234,7 +235,7 @@ class ProfileHeader: UICollectionReusableView {
     }
     
     @objc private func editProfileOrFollowButtonTapped() {
-        print("Tapppppped")
+        delegate?.handleEditProfileOrFollow(self)
     }
     
     @objc private func handleFollowingTapped() {
@@ -244,6 +245,11 @@ class ProfileHeader: UICollectionReusableView {
     @objc private func handleFollowersTapped() {
         
     }
+    
+//    // MARK:- Public Methods
+//    public func setFollowButtonTitle(title: String) {
+//        self.editProfileOrFollowButton.setTitle(title, for: .normal)
+//    }
 }
 
 // MARK:- ProfileFilterViewDelegate

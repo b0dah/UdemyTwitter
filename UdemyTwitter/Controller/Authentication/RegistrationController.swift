@@ -152,15 +152,12 @@ class RegistrationController: UIViewController {
         
         let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
         
-        print("DB: about to request")
         AuthService.shared.registerUser(credentials: credentials) { (error, reference) in
             
             guard error == nil else {
                 print("DB: Sign Up failed with error: \(error!.localizedDescription)")
                 return
             }
-            
-            print("DB: Sign Up Successfull")
             
             guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow } ),
                   let mainTabVC = window.rootViewController as? MainTabController
