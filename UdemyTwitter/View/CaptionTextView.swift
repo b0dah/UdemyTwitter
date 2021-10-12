@@ -14,6 +14,7 @@ class CaptionTextView: UITextView {
     let placeHolderLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
+        label.textColor = .gray
         label.text = "Waht's happening?"
         return label
     } ()
@@ -37,7 +38,7 @@ class CaptionTextView: UITextView {
         self.backgroundColor = .white
         font = UIFont.systemFont(ofSize: 16)
         isScrollEnabled = false
-        heightAnchor.constraint(equalToConstant: 300).isActive = true
+        heightAnchor.constraint(equalToConstant: 150).isActive = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleTextInputChange), name: UITextView.textDidChangeNotification, object: nil)
     }

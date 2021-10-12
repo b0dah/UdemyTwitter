@@ -9,6 +9,7 @@ import UIKit
 
 protocol TweetCellDelegate: AnyObject {
     func handleProfileImageTapped(_ cell: TweetCell)
+    func handleReplyTapped(_ cell: TweetCell)
 }
 
 class TweetCell: UICollectionViewCell {
@@ -109,6 +110,7 @@ class TweetCell: UICollectionViewCell {
     
     @objc private func handleCommentButtonTapped() {
         print("Comment!")
+        self.delegate?.handleReplyTapped(self)
     }
     
     @objc private func handleRetweetButtonTapped() {
@@ -145,6 +147,7 @@ class TweetCell: UICollectionViewCell {
         // Author + Caption Label
         let stackView = UIStackView(arrangedSubviews: [authorLabel, captionLabel])
         stackView.axis = .vertical
+        stackView.spacing = 4
         stackView.distribution = .fillProportionally
         self.addSubview(stackView)
         stackView.anchor(top: self.profileImageView.topAnchor,
@@ -165,7 +168,7 @@ class TweetCell: UICollectionViewCell {
         // Bottom Buttons
         let buttonStackView = UIStackView(arrangedSubviews: [commentButton, retweetButton, likeButton, shareButton])
         buttonStackView.axis = .horizontal
-        buttonStackView.spacing = 50
+        buttonStackView.spacing = 65
         self.addSubview(buttonStackView)
         buttonStackView.centerX(inView: self)
         buttonStackView.anchor(bottom: bottomAnchor, paddingBottom: 8)

@@ -105,18 +105,34 @@ extension FeedController {
     }
 }
 
+// MARK:- UICollectionViewDelegate
+
+extension FeedController {
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = TweetController(tweet: tweets[indexPath.row])
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
 // MARK:- UICollectionViewDelegateFlowLayout
 
 extension FeedController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: view.frame.width, height: 120)
+        let tweet = tweets[indexPath.row]
+        let viewModel = TweetViewModel(tweet: tweet)
+        let labelWidth = self.view.frame.width - 16 - 12 - 48
+        let captionLabelHeight = viewModel.heightForCaptionLabel(withWidth: labelWidth, andForFontSize: 14)
+        
+        return CGSize(width: self.view.frame.width, height: captionLabelHeight + 70)
     }
 }
 
 // MARK:- TweetCellDelegate
 
 extension FeedController: TweetCellDelegate {
+    
     func handleProfileImageTapped(_ cell: TweetCell) {
         
         guard let user = cell.tweet?.user else { return }
@@ -125,6 +141,13 @@ extension FeedController: TweetCellDelegate {
         self.navigationController?.pushViewController(profileController, animated: true)
     }
     
-    
+    func handleReplyTapped(_ cell: TweetCell) {
+        guard let tweet = cell.tweet else { return }
+        let controller = UploadTweetController(user: tweet.user, configuration: .reply(tweet))
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .fullScreen
+        
+        present(navigationController, animated: true)
+    }
 }
 

@@ -130,10 +130,7 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: self.view.frame.width, height: 350)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: view.frame.width, height: 120)
-    }
+
 }
 
 // MARK:- ProfileHeaderDelegate
